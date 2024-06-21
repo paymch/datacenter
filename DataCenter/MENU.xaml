@@ -1,0 +1,78 @@
+﻿<Page x:Class="DataCenter.MENU"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Главная страница">
+
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="ДатаЦентр" Foreground="White" FontSize="30" FontWeight="Bold" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <Button Name="listWorks" Content="Список сотрудников" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Margin="0 5" Click="listWorks_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="listDevice" Content="Список устройств" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Margin="0 5" Click="listDevice_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="historyFix" Content="История ремонтов" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Margin="0 5" Click="historyFix_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="listCustomers" Content="Клиенты" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Margin="0 5" Click="listCustomers_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="addWrite" Content="Добавить запись" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Margin="0 5" Click="addWrite_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <Button Name="btnExit" Content="Назад" Foreground="White" FontSize="20" Background="#4CFFFFFF" FontWeight="Bold" Height="50" Width="100" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnExit_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

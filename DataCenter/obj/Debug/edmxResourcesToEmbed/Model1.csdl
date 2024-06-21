@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Адрес_сотрудника">
+    <Key>
+      <PropertyRef Name="id_Адрес_сотрудника" />
+    </Key>
+    <Property Name="id_Адрес_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="id_Город" Type="Int32" />
+    <Property Name="id_Улица" Type="Int32" />
+    <Property Name="id_Дом" Type="Int32" />
+    <NavigationProperty Name="Город" Relationship="Self.FK__Адрес_сот__id_Го__164452B1" FromRole="Адрес_сотрудника" ToRole="Город" />
+    <NavigationProperty Name="Дом" Relationship="Self.FK__Адрес_сот__id_До__182C9B23" FromRole="Адрес_сотрудника" ToRole="Дом" />
+    <NavigationProperty Name="Улица" Relationship="Self.FK__Адрес_сот__id_Ул__173876EA" FromRole="Адрес_сотрудника" ToRole="Улица" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK__Сотрудник__id_Ад__1ED998B2" FromRole="Адрес_сотрудника" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Вид_техники">
+    <Key>
+      <PropertyRef Name="id_Вид_техники" />
+    </Key>
+    <Property Name="id_Вид_техники" Type="Int32" Nullable="false" />
+    <Property Name="Вид_техники1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Устройство" Relationship="Self.FK__Устройств__id_Ви__25869641" FromRole="Вид_техники" ToRole="Устройство" />
+  </EntityType>
+  <EntityType Name="Город">
+    <Key>
+      <PropertyRef Name="id_Город" />
+    </Key>
+    <Property Name="id_Город" Type="Int32" Nullable="false" />
+    <Property Name="Город1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Адрес_сотрудника" Relationship="Self.FK__Адрес_сот__id_Го__164452B1" FromRole="Город" ToRole="Адрес_сотрудника" />
+  </EntityType>
+  <EntityType Name="Должность">
+    <Key>
+      <PropertyRef Name="id_Должность" />
+    </Key>
+    <Property Name="id_Должность" Type="Int32" Nullable="false" />
+    <Property Name="Должность1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK__Сотрудник__id_До__1DE57479" FromRole="Должность" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Дом">
+    <Key>
+      <PropertyRef Name="id_Дом" />
+    </Key>
+    <Property Name="id_Дом" Type="Int32" Nullable="false" />
+    <Property Name="Дом1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Адрес_сотрудника" Relationship="Self.FK__Адрес_сот__id_До__182C9B23" FromRole="Дом" ToRole="Адрес_сотрудника" />
+  </EntityType>
+  <EntityType Name="Клиент">
+    <Key>
+      <PropertyRef Name="id_Клиент" />
+    </Key>
+    <Property Name="id_Клиент" Type="Int32" Nullable="false" />
+    <Property Name="ФИО" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__id_Клиен__2D27B809" FromRole="Клиент" ToRole="Ремонт" />
+  </EntityType>
+  <EntityType Name="Ремонт">
+    <Key>
+      <PropertyRef Name="id_Ремонт" />
+    </Key>
+    <Property Name="id_Ремонт" Type="Int32" Nullable="false" />
+    <Property Name="id_Устройство" Type="Int32" />
+    <Property Name="id_Тип_ремонта" Type="Int32" />
+    <Property Name="id_Сотрудник" Type="Int32" />
+    <Property Name="id_Клиент" Type="Int32" />
+    <Property Name="Дата_начала" Type="DateTime" Precision="0" />
+    <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Стоимость" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Клиент" Relationship="Self.FK__Ремонт__id_Клиен__2D27B809" FromRole="Ремонт" ToRole="Клиент" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK__Ремонт__id_Сотру__2C3393D0" FromRole="Ремонт" ToRole="Сотрудник" />
+    <NavigationProperty Name="Тип_ремонта" Relationship="Self.FK__Ремонт__id_Тип_р__2B3F6F97" FromRole="Ремонт" ToRole="Тип_ремонта" />
+    <NavigationProperty Name="Устройство" Relationship="Self.FK__Ремонт__id_Устро__2A4B4B5E" FromRole="Ремонт" ToRole="Устройство" />
+  </EntityType>
+  <EntityType Name="Сотрудник">
+    <Key>
+      <PropertyRef Name="id_Сотрудник" />
+    </Key>
+    <Property Name="id_Сотрудник" Type="Int32" Nullable="false" />
+    <Property Name="id_Должность" Type="Int32" />
+    <Property Name="id_Адрес_сотрудника" Type="Int32" />
+    <Property Name="ФИО" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Почта" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Логин" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Пароль" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Зарплата" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Адрес_сотрудника" Relationship="Self.FK__Сотрудник__id_Ад__1ED998B2" FromRole="Сотрудник" ToRole="Адрес_сотрудника" />
+    <NavigationProperty Name="Должность" Relationship="Self.FK__Сотрудник__id_До__1DE57479" FromRole="Сотрудник" ToRole="Должность" />
+    <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__id_Сотру__2C3393D0" FromRole="Сотрудник" ToRole="Ремонт" />
+  </EntityType>
+  <EntityType Name="Тип_ремонта">
+    <Key>
+      <PropertyRef Name="id_Тип_ремонта" />
+    </Key>
+    <Property Name="id_Тип_ремонта" Type="Int32" Nullable="false" />
+    <Property Name="Тип_ремонта1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__id_Тип_р__2B3F6F97" FromRole="Тип_ремонта" ToRole="Ремонт" />
+  </EntityType>
+  <EntityType Name="Улица">
+    <Key>
+      <PropertyRef Name="id_Улица" />
+    </Key>
+    <Property Name="id_Улица" Type="Int32" Nullable="false" />
+    <Property Name="Улица1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Адрес_сотрудника" Relationship="Self.FK__Адрес_сот__id_Ул__173876EA" FromRole="Улица" ToRole="Адрес_сотрудника" />
+  </EntityType>
+  <EntityType Name="Устройство">
+    <Key>
+      <PropertyRef Name="id_Устройства" />
+    </Key>
+    <Property Name="id_Устройства" Type="Int32" Nullable="false" />
+    <Property Name="id_Вид_техники" Type="Int32" />
+    <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Серийный_номер" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Вид_техники" Relationship="Self.FK__Устройств__id_Ви__25869641" FromRole="Устройство" ToRole="Вид_техники" />
+    <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__id_Устро__2A4B4B5E" FromRole="Устройство" ToRole="Ремонт" />
+  </EntityType>
+  <Association Name="FK__Адрес_сот__id_Го__164452B1">
+    <End Role="Город" Type="Self.Город" Multiplicity="0..1" />
+    <End Role="Адрес_сотрудника" Type="Self.Адрес_сотрудника" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Город">
+        <PropertyRef Name="id_Город" />
+      </Principal>
+      <Dependent Role="Адрес_сотрудника">
+        <PropertyRef Name="id_Город" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Адрес_сот__id_До__182C9B23">
+    <End Role="Дом" Type="Self.Дом" Multiplicity="0..1" />
+    <End Role="Адрес_сотрудника" Type="Self.Адрес_сотрудника" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Дом">
+        <PropertyRef Name="id_Дом" />
+      </Principal>
+      <Dependent Role="Адрес_сотрудника">
+        <PropertyRef Name="id_Дом" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Адрес_сот__id_Ул__173876EA">
+    <End Role="Улица" Type="Self.Улица" Multiplicity="0..1" />
+    <End Role="Адрес_сотрудника" Type="Self.Адрес_сотрудника" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Улица">
+        <PropertyRef Name="id_Улица" />
+      </Principal>
+      <Dependent Role="Адрес_сотрудника">
+        <PropertyRef Name="id_Улица" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Сотрудник__id_Ад__1ED998B2">
+    <End Role="Адрес_сотрудника" Type="Self.Адрес_сотрудника" Multiplicity="0..1" />
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Адрес_сотрудника">
+        <PropertyRef Name="id_Адрес_сотрудника" />
+      </Principal>
+      <Dependent Role="Сотрудник">
+        <PropertyRef Name="id_Адрес_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Устройств__id_Ви__25869641">
+    <End Role="Вид_техники" Type="Self.Вид_техники" Multiplicity="0..1" />
+    <End Role="Устройство" Type="Self.Устройство" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Вид_техники">
+        <PropertyRef Name="id_Вид_техники" />
+      </Principal>
+      <Dependent Role="Устройство">
+        <PropertyRef Name="id_Вид_техники" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Сотрудник__id_До__1DE57479">
+    <End Role="Должность" Type="Self.Должность" Multiplicity="0..1" />
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Должность">
+        <PropertyRef Name="id_Должность" />
+      </Principal>
+      <Dependent Role="Сотрудник">
+        <PropertyRef Name="id_Должность" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ремонт__id_Клиен__2D27B809">
+    <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
+    <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиент">
+        <PropertyRef Name="id_Клиент" />
+      </Principal>
+      <Dependent Role="Ремонт">
+        <PropertyRef Name="id_Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ремонт__id_Сотру__2C3393D0">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+    <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="id_Сотрудник" />
+      </Principal>
+      <Dependent Role="Ремонт">
+        <PropertyRef Name="id_Сотрудник" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ремонт__id_Тип_р__2B3F6F97">
+    <End Role="Тип_ремонта" Type="Self.Тип_ремонта" Multiplicity="0..1" />
+    <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тип_ремонта">
+        <PropertyRef Name="id_Тип_ремонта" />
+      </Principal>
+      <Dependent Role="Ремонт">
+        <PropertyRef Name="id_Тип_ремонта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ремонт__id_Устро__2A4B4B5E">
+    <End Role="Устройство" Type="Self.Устройство" Multiplicity="0..1" />
+    <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Устройство">
+        <PropertyRef Name="id_Устройства" />
+      </Principal>
+      <Dependent Role="Ремонт">
+        <PropertyRef Name="id_Устройство" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataCenterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Адрес_сотрудника" EntityType="Self.Адрес_сотрудника" />
+    <EntitySet Name="Вид_техники" EntityType="Self.Вид_техники" />
+    <EntitySet Name="Город" EntityType="Self.Город" />
+    <EntitySet Name="Должность" EntityType="Self.Должность" />
+    <EntitySet Name="Дом" EntityType="Self.Дом" />
+    <EntitySet Name="Клиент" EntityType="Self.Клиент" />
+    <EntitySet Name="Ремонт" EntityType="Self.Ремонт" />
+    <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
+    <EntitySet Name="Тип_ремонта" EntityType="Self.Тип_ремонта" />
+    <EntitySet Name="Улица" EntityType="Self.Улица" />
+    <EntitySet Name="Устройство" EntityType="Self.Устройство" />
+    <AssociationSet Name="FK__Адрес_сот__id_Го__164452B1" Association="Self.FK__Адрес_сот__id_Го__164452B1">
+      <End Role="Город" EntitySet="Город" />
+      <End Role="Адрес_сотрудника" EntitySet="Адрес_сотрудника" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Адрес_сот__id_До__182C9B23" Association="Self.FK__Адрес_сот__id_До__182C9B23">
+      <End Role="Дом" EntitySet="Дом" />
+      <End Role="Адрес_сотрудника" EntitySet="Адрес_сотрудника" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Адрес_сот__id_Ул__173876EA" Association="Self.FK__Адрес_сот__id_Ул__173876EA">
+      <End Role="Улица" EntitySet="Улица" />
+      <End Role="Адрес_сотрудника" EntitySet="Адрес_сотрудника" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Сотрудник__id_Ад__1ED998B2" Association="Self.FK__Сотрудник__id_Ад__1ED998B2">
+      <End Role="Адрес_сотрудника" EntitySet="Адрес_сотрудника" />
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Устройств__id_Ви__25869641" Association="Self.FK__Устройств__id_Ви__25869641">
+      <End Role="Вид_техники" EntitySet="Вид_техники" />
+      <End Role="Устройство" EntitySet="Устройство" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Сотрудник__id_До__1DE57479" Association="Self.FK__Сотрудник__id_До__1DE57479">
+      <End Role="Должность" EntitySet="Должность" />
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ремонт__id_Клиен__2D27B809" Association="Self.FK__Ремонт__id_Клиен__2D27B809">
+      <End Role="Клиент" EntitySet="Клиент" />
+      <End Role="Ремонт" EntitySet="Ремонт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ремонт__id_Сотру__2C3393D0" Association="Self.FK__Ремонт__id_Сотру__2C3393D0">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Ремонт" EntitySet="Ремонт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ремонт__id_Тип_р__2B3F6F97" Association="Self.FK__Ремонт__id_Тип_р__2B3F6F97">
+      <End Role="Тип_ремонта" EntitySet="Тип_ремонта" />
+      <End Role="Ремонт" EntitySet="Ремонт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ремонт__id_Устро__2A4B4B5E" Association="Self.FK__Ремонт__id_Устро__2A4B4B5E">
+      <End Role="Устройство" EntitySet="Устройство" />
+      <End Role="Ремонт" EntitySet="Ремонт" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

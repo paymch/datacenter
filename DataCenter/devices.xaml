@@ -1,0 +1,108 @@
+﻿<Page x:Class="DataCenter.devices"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Устройства">
+
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок "Устройства" -->
+        <TextBlock Text="Устройства" Foreground="White" FontSize="30" FontWeight="Bold" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <!-- Панель фильтров и поиска -->
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Text="Наименование:" Foreground="White" FontWeight="Bold" Width="150"/>
+                <TextBox x:Name="txtNameFilter" Width="150" Margin="5" VerticalAlignment="Center" Background="#26FFFFFF" TextChanged="txtNameFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Text="Серийный номер:" Margin="10 0 5 0" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <TextBox x:Name="txtSerialNumberFilter" Width="150" Margin="5" VerticalAlignment="Center" Background="#26FFFFFF" TextChanged="txtSerialNumberFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Text="Тип устройства:" Margin="10 0 5 0" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <ComboBox x:Name="cmbDeviceType" Width="150" Margin="5" VerticalAlignment="Center" Background="#26FFFFFF" SelectionChanged="cmbDeviceType_SelectionChanged">
+                   
+                </ComboBox>
+            </StackPanel>
+            <Button Content="Сбросить" Margin="10 0" VerticalAlignment="Center" Background="#4CFFFFFF" Width="80" FontWeight="Bold" Height="24" Foreground="White" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <!-- DataGrid для отображения устройств -->
+        <DataGrid Grid.Row="1" x:Name="dgDevices" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10,0,10,10"
+                  RowHeaderWidth="0" BorderBrush="LightGray" BorderThickness="1" Background="White" SelectionMode="Single" RowDetailsVisibilityMode="Visible" Height="NaN">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тип устройства" Binding="{Binding Вид_техники.Вид_техники1}" Width="*"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Наименование}" Width="*"/>
+                <DataGridTextColumn Header="Серийный номер" Binding="{Binding Серийный_номер}" Width="*"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="btnEdit" Content="Редактировать" Margin="5" Background="#4CFFFFFF" FontWeight="Bold" Click="btnEdit_Click">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Name="btnDelete" Content="Удалить" Margin="5" Background="#4CFFFFFF" FontWeight="Bold" Click="btnDelete_Click" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопка "Добавить устройство" -->
+        <Button Content="Добавить устройство" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#4CFFFFFF" FontWeight="Bold" Height="40" Width="200" Margin="10"
+                 Foreground="White" Click="Button_Click_1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- Кнопка "Назад" -->
+        <Button Content="Назад" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#4CFFFFFF" FontWeight="Bold" Height="40" Width="100" Margin="10"
+                Foreground="White" Click="Button_Click_2">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

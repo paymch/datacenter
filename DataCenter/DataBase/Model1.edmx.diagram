@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b57eb9c4aaa240858775262dc905f422" Name="Diagram1">
+        <EntityTypeShape EntityType="DataCenterModel.Адрес_сотрудника" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Вид_техники" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Город" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Должность" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Дом" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Клиент" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Ремонт" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Сотрудник" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Тип_ремонта" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Улица" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataCenterModel.Устройство" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="DataCenterModel.FK__Адрес_сот__id_Го__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Адрес_сот__id_До__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Адрес_сот__id_Ул__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Сотрудник__id_Ад__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Устройств__id_Ви__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Сотрудник__id_До__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Ремонт__id_Клиен__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Ремонт__id_Сотру__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Ремонт__id_Тип_р__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DataCenterModel.FK__Ремонт__id_Устро__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

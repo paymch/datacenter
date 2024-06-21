@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DataCenterModelContainer" CdmEntityContainer="DataCenterEntities">
+    <EntitySetMapping Name="Адрес_сотрудника">
+      <EntityTypeMapping TypeName="DataCenterModel.Адрес_сотрудника">
+        <MappingFragment StoreEntitySet="Адрес_сотрудника">
+          <ScalarProperty Name="id_Адрес_сотрудника" ColumnName="id_Адрес_сотрудника" />
+          <ScalarProperty Name="id_Город" ColumnName="id_Город" />
+          <ScalarProperty Name="id_Улица" ColumnName="id_Улица" />
+          <ScalarProperty Name="id_Дом" ColumnName="id_Дом" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Вид_техники">
+      <EntityTypeMapping TypeName="DataCenterModel.Вид_техники">
+        <MappingFragment StoreEntitySet="Вид_техники">
+          <ScalarProperty Name="id_Вид_техники" ColumnName="id_Вид_техники" />
+          <ScalarProperty Name="Вид_техники1" ColumnName="Вид_техники" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Город">
+      <EntityTypeMapping TypeName="DataCenterModel.Город">
+        <MappingFragment StoreEntitySet="Город">
+          <ScalarProperty Name="id_Город" ColumnName="id_Город" />
+          <ScalarProperty Name="Город1" ColumnName="Город" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Должность">
+      <EntityTypeMapping TypeName="DataCenterModel.Должность">
+        <MappingFragment StoreEntitySet="Должность">
+          <ScalarProperty Name="id_Должность" ColumnName="id_Должность" />
+          <ScalarProperty Name="Должность1" ColumnName="Должность" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Дом">
+      <EntityTypeMapping TypeName="DataCenterModel.Дом">
+        <MappingFragment StoreEntitySet="Дом">
+          <ScalarProperty Name="id_Дом" ColumnName="id_Дом" />
+          <ScalarProperty Name="Дом1" ColumnName="Дом" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиент">
+      <EntityTypeMapping TypeName="DataCenterModel.Клиент">
+        <MappingFragment StoreEntitySet="Клиент">
+          <ScalarProperty Name="id_Клиент" ColumnName="id_Клиент" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ремонт">
+      <EntityTypeMapping TypeName="DataCenterModel.Ремонт">
+        <MappingFragment StoreEntitySet="Ремонт">
+          <ScalarProperty Name="id_Ремонт" ColumnName="id_Ремонт" />
+          <ScalarProperty Name="id_Устройство" ColumnName="id_Устройство" />
+          <ScalarProperty Name="id_Тип_ремонта" ColumnName="id_Тип_ремонта" />
+          <ScalarProperty Name="id_Сотрудник" ColumnName="id_Сотрудник" />
+          <ScalarProperty Name="id_Клиент" ColumnName="id_Клиент" />
+          <ScalarProperty Name="Дата_начала" ColumnName="Дата_начала" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник">
+      <EntityTypeMapping TypeName="DataCenterModel.Сотрудник">
+        <MappingFragment StoreEntitySet="Сотрудник">
+          <ScalarProperty Name="id_Сотрудник" ColumnName="id_Сотрудник" />
+          <ScalarProperty Name="id_Должность" ColumnName="id_Должность" />
+          <ScalarProperty Name="id_Адрес_сотрудника" ColumnName="id_Адрес_сотрудника" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Почта" ColumnName="Почта" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Тип_ремонта">
+      <EntityTypeMapping TypeName="DataCenterModel.Тип_ремонта">
+        <MappingFragment StoreEntitySet="Тип_ремонта">
+          <ScalarProperty Name="id_Тип_ремонта" ColumnName="id_Тип_ремонта" />
+          <ScalarProperty Name="Тип_ремонта1" ColumnName="Тип_ремонта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Улица">
+      <EntityTypeMapping TypeName="DataCenterModel.Улица">
+        <MappingFragment StoreEntitySet="Улица">
+          <ScalarProperty Name="id_Улица" ColumnName="id_Улица" />
+          <ScalarProperty Name="Улица1" ColumnName="Улица" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Устройство">
+      <EntityTypeMapping TypeName="DataCenterModel.Устройство">
+        <MappingFragment StoreEntitySet="Устройство">
+          <ScalarProperty Name="id_Устройства" ColumnName="id_Устройства" />
+          <ScalarProperty Name="id_Вид_техники" ColumnName="id_Вид_техники" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Серийный_номер" ColumnName="Серийный_номер" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

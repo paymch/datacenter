@@ -1,0 +1,120 @@
+﻿<Page x:Class="DataCenter.History"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="История ремонтов">
+
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок "История ремонтов" -->
+        <TextBlock Text="История ремонтов" Foreground="White" FontSize="30" FontWeight="Bold" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <!-- Панель фильтров и поиска -->
+        <StackPanel Orientation="Horizontal" Margin="0,57,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Устройство:" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <TextBox x:Name="txtDeviceFilter" Width="100" Margin="5" Background="#26FFFFFF" TextChanged="txtDeviceFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Тип ремонта:" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <TextBox x:Name="txtRepairTypeFilter" Width="100" Margin="5" Background="#26FFFFFF" TextChanged="txtRepairTypeFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Сотрудник:" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <TextBox x:Name="txtEmployeeFilter" Width="100" Margin="5" Background="#26FFFFFF" TextChanged="txtEmployeeFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Клиент:" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <TextBox x:Name="txtClientFilter" Width="100" Margin="5" Background="#26FFFFFF" TextChanged="txtClientFilter_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Дата:" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                <DatePicker x:Name="dpDateFilter" Width="100" Margin="5" Background="#26FFFFFF" SelectedDateChanged="dpDateFilter_SelectedDateChanged"/>
+            </StackPanel>
+            <Button Name="btnClear" Content="Сбросить" Margin="10 0" VerticalAlignment="Center" Background="#4CFFFFFF" Width="80" FontWeight="Bold"  Height="39" Foreground="White" Click="btnClear_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <!-- DataGrid для отображения истории ремонтов -->
+        <DataGrid Grid.Row="1" x:Name="dgRepairs" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10,53,10,10"
+                  RowHeaderWidth="0" BorderBrush="LightGray" BorderThickness="1" Background="White" SelectionMode="Single" RowDetailsVisibilityMode="Visible" Height="NaN">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Устройство" Binding="{Binding Устройство.Наименование}"/>
+                <DataGridTextColumn Header="Тип ремонта" Binding="{Binding Тип_ремонта.Тип_ремонта1}"/>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Сотрудник.ФИО}"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Клиент.ФИО}"/>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding Дата_начала}"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Описание}"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Стоимость}"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="btnEdit" Content="Редактировать" Margin="5" Background="#4CFFFFFF" FontWeight="Bold" Click="btnEdit_Click" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Name="btnDelete" Content="Удалить" Margin="5" Background="#4CFFFFFF" FontWeight="Bold" Click="btnDelete_Click" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки "Excel" -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+            <Button Name="btnExcel" Content="Excel" Width="100" Height="40" Margin="10" Background="#4CFFFFFF" FontWeight="Bold"  Foreground="White" Click="btnExcel_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            
+        </StackPanel>
+
+        <!-- Кнопка "Назад" -->
+        <Button Name="btnBack" Content="Назад" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#4CFFFFFF" FontWeight="Bold" Height="40" Width="100" Margin="10"
+                 Foreground="White" Click="btnBack_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#4CFFFFFF" CornerRadius="15" BorderBrush="Transparent" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>
